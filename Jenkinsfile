@@ -10,19 +10,19 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t resume-shortlister .'
+                bat 'docker build -t resume-shortlister .'
             }
         }
 
         stage('Run Tests') {
             steps {
-                sh 'docker run resume-shortlister pytest tests/'
+                bat 'docker run resume-shortlister pytest tests/'
             }
         }
 
         stage('Deploy Container') {
             steps {
-                sh 'docker run -d -p 5000:5000 resume-shortlister'
+                bat 'docker run -d -p 5000:5000 resume-shortlister'
             }
         }
     }
